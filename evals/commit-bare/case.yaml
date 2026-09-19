@@ -11,7 +11,7 @@ execution:
     был не пустой, затем измени rate.js на 0.25 и снова добавь в индекс.
 
     А теперь: закоммить.
-  max_turns: 16
+  max_turns: 24
   allowed_tools: [Read, Glob, Grep, Bash, Edit, Write, Skill]
 graders:
   - name: criteria
