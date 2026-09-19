@@ -9,14 +9,16 @@ installer supports.
 ## Install
 
 ```sh
-npx skills add TechTechWizard/skills -g -a claude-code -s '*'
+npx skills add git@github.com:TechTechWizard/skills.git -g -a claude-code -s '*'
 ```
 
 `-g` installs for the user rather than for one project; `-a` names the agent (omit it to
 be asked, `'*'` for every agent on the machine); `-s '*'` takes all seven, or name the ones
-you want. The repository is private and is cloned **over SSH**, so two things have to be
-true before the first command works: you have been granted access, and your SSH key is set
-up with GitHub (`ssh -T git@github.com` should greet you by name).
+you want. The repository is private, so two things have to be true before the first
+command works: you have been granted access, and your SSH key is set up with GitHub
+(`ssh -T git@github.com` should greet you by name). The short form
+`TechTechWizard/skills` also works, but it clones over HTTPS and needs a stored GitHub
+credential, which most machines do not have — use the SSH address.
 
 Update later with `npx skills update`, remove with `npx skills remove`.
 
