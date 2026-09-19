@@ -89,11 +89,15 @@ rather than refuses:
 ## How this repository is laid out
 
 ```
-skills/<name>/          one directory per skill: SKILL.md, protocols/, references/
+<name>/                 one directory per skill, flat at the root: SKILL.md, protocols/, references/
 shared/                 the canonical copy of references several skills carry
 scripts/sync-shared.sh  copies shared/ into every skill that carries the file; --check
 evals/                  eval cases, run with `claude plugin eval .`
 ```
+
+Skills sit flat at the root, the same way the frontend direction lays out its own
+repository, so the two install with the same command and look the same to whoever opens
+them.
 
 The Agent Skills format makes every skill self-contained — an installer copies the skill's
 directory and nothing else — so four references (`standards.md`, `review-checklist.md`,

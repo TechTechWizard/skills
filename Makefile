@@ -12,7 +12,7 @@ check: validate
 	@./scripts/sync-shared.sh --check
 
 validate:
-	@for s in skills/*/; do npx -y skills-ref validate "$$s"; done
+	@for s in */SKILL.md; do npx -y skills-ref validate "$$(dirname $$s)"; done
 
 sync:
 	@./scripts/sync-shared.sh

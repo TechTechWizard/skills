@@ -23,7 +23,7 @@ jobs:
         run: uv tool install git+https://github.com/TechTechWizard/claude-setup-kit
 
       - name: Validate every skill against the Agent Skills specification
-        run: for s in skills/*/; do npx -y skills-ref validate "$s"; done
+        run: for s in */SKILL.md; do npx -y skills-ref validate "$(dirname "$s")"; done
 
       - name: Check
         run: claude-setup check . --no-colour

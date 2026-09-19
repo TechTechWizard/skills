@@ -10,7 +10,7 @@ check=0; [ "${1:-}" = "--check" ] && check=1
 drift=0
 for canon in shared/*.md; do
   name=$(basename "$canon")
-  for copy in skills/*/references/"$name"; do
+  for copy in */references/"$name"; do
     [ -e "$copy" ] || continue
     if ! cmp -s "$canon" "$copy"; then
       if [ $check -eq 1 ]; then echo "DRIFT  $copy differs from $canon"; drift=1
