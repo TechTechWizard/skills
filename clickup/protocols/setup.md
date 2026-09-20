@@ -41,10 +41,9 @@ is an expected state on a first run rather than a broken installation.
    The installer prints which prerequisites are present and which are not. Relay that list
    as it is — it is written for a human.
 
-   **If the clone fails with a permission or authentication error**, stop and say so
-   plainly: the repository is private, and access is granted per person. The user needs to
-   ask its owner for access; nothing you can do from here fixes it. Do not attempt other
-   URLs, other protocols, or a public mirror — there is none.
+   **If the clone fails**, the repository is public and needs no credential, so the
+   cause is the network or a missing `git`, not access. Report the error as it came back
+   rather than guessing, and do not try other URLs or protocols.
 
 3. **Check the PATH.** If the installer reports that `~/.local/bin` is not on `PATH`, give
    the one line to add to their shell profile and say which file (`~/.zshrc` for zsh,

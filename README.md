@@ -9,16 +9,13 @@ installer supports.
 ## Install
 
 ```sh
-npx skills add git@github.com:TechTechWizard/skills.git -g -a claude-code -s '*'
+npx skills add TechTechWizard/skills -g -a claude-code -s '*'
 ```
 
 `-g` installs for the user rather than for one project; `-a` names the agent (omit it to
 be asked, `'*'` for every agent on the machine); `-s '*'` takes all seven, or name the ones
-you want. The repository is private, so two things have to be true before the first
-command works: you have been granted access, and your SSH key is set up with GitHub
-(`ssh -T git@github.com` should greet you by name). The short form
-`TechTechWizard/skills` also works, but it clones over HTTPS and needs a stored GitHub
-credential, which most machines do not have — use the SSH address.
+you want. Nothing else is needed: the repository is public, so the clone goes over HTTPS
+and asks for no credential and no access.
 
 Update later with `npx skills update`, remove with `npx skills remove`.
 
@@ -118,3 +115,7 @@ standard into the slot above.
 
 Open an issue, or send a pull request. There is one maintainer and no promise about how
 fast a change lands, which is worth knowing before you wait on one.
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).
