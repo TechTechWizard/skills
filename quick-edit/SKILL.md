@@ -1,6 +1,7 @@
 ---
 name: quick-edit
 description: "A small change the developer is watching: fix a bug in this file, rename it, add the field, adjust the copy. Reads the team standard for the touched stack, keeps the change surgical, runs the tests that already cover it, and answers with what the diff does not say. Trigger on «поправь», «почини», «переименуй», «добавь», «убери», «исправь», fix, rename, tweak — and on any change small enough that nobody will review it separately. NOT for a prepared task from the tracker: that is implement-task, which runs on its own and hands over a report."
+compatibility: "Needs git. Written for Claude Code; the standards lookup reads ~/.claude/standards/."
 allowed-tools: Read Write Edit Grep Glob Bash
 ---
 
@@ -58,3 +59,11 @@ developer can redirect you before the work rather than after.
 
 Not part of this. When the developer wants the change committed they will say so, and
 the `commit` skill owns the convention.
+
+## Never
+
+- Never improve code you happened to read. The request names what changes; everything
+  adjacent stays as it is, however wrong it looks.
+- Never write new tests here. A change that needs them is a task, and belongs to
+  `implement-task`.
+- Never commit. The developer is watching and commits when they are ready, with `commit`.

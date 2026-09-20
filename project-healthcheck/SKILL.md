@@ -1,6 +1,7 @@
 ---
 name: project-healthcheck
 description: "Regular project healthcheck: API state, frontend state, database diagnostics, usage statistics. Universal — reads per-project config from <project>/.claude/healthcheck.md. Use when user asks for a healthcheck, project status check, 'хелсчек', 'состояние проекта', 'проверь стенд', 'статистика использования', 'usage report'."
+compatibility: "Needs a <project>/.claude/healthcheck.md the project writes about itself, plus whatever that config names: a browser for the frontend pass, database access for the database pass."
 allowed-tools: Bash Read Write Grep Glob WebFetch Skill
 ---
 
@@ -64,3 +65,18 @@ area configured for the run could not be checked at all.
 This skill is the payload; scheduling is not its business. Regular runs go through the
 `schedule` skill, where the harness offers one, or a hire of the `tester` role
 with this skill named in the task text.
+
+## Never
+
+- **Never touch a stand before the config is confirmed.** When there is no
+  `healthcheck.md`, the draft goes to whoever asked and the run stops there — no request
+  to an API, no page opened in a browser, no DNS probe, nothing. A draft assembled from a
+  README is a guess about which environment is safe to touch, and the first guess this
+  rule stopped was production. Waiting costs one message.
+- Never a request that changes anything: no write to a database, no POST, PUT, PATCH or
+  DELETE, no form submitted. A healthcheck that modified something is a failed
+  healthcheck, whatever it found.
+- Never edit the project's own configuration during a run. A missing `TODO` is reported,
+  not filled in silently.
+- Never report an area as healthy when it was not reached. It goes under «Не проверено и
+  почему», and the verdict for the run says so.

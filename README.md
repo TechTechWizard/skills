@@ -90,10 +90,15 @@ rather than refuses:
 
 ```
 <name>/                 one directory per skill, flat at the root: SKILL.md, protocols/, references/
+<name>/agents/          per-agent presentation metadata: openai.yaml names the skill in Codex
 shared/                 the canonical copy of references several skills carry
 scripts/sync-shared.sh  copies shared/ into every skill that carries the file; --check
 evals/                  eval cases, run with `claude plugin eval .`
 ```
+
+Each skill declares what it needs to run in its `compatibility:` field — the CLI it wraps,
+the authentication it expects, whether it leans on a built-in skill of the host. Read it
+before installing one skill rather than the set.
 
 Skills sit flat at the root, the same way the frontend direction lays out its own
 repository, so the two install with the same command and look the same to whoever opens

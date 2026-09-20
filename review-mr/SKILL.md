@@ -1,6 +1,7 @@
 ---
 name: review-mr
 description: "Review somebody else's merge request: read the diff against the team checklist, hunt bugs with the built-in reviewers, and post the findings as comments on the merge request. Trigger on «сделай ревью», «посмотри MR», «проверь мерж реквест», «отревьюй», review this MR, code review — and on any GitLab merge-request URL, even with no other instruction. Read-only on the code: it describes fixes, it never applies them. Reviewing your own fresh work is part of implement-task instead."
+compatibility: "Needs git and `glab` authenticated against your GitLab instance. Written for Claude Code: it invokes the built-in code-review and security-review skills through the Skill tool."
 allowed-tools: Read Grep Glob Bash Skill
 ---
 
@@ -109,3 +110,15 @@ One line per category: clean, or the finding that broke it.
 
 Write the report in the language the developer is speaking. The comments on the merge
 request are in English regardless, because the author may not share that language.
+
+## Never
+
+- Never edit the code under review. A reviewer who fixes the defect takes the decision
+  away from the author and hides the disagreement; the finding says what is wrong and
+  what would fix it.
+- Never paste the report into GitLab. The report goes to whoever asked for the review;
+  the comments on the merge request are a much smaller, separate artifact.
+- Never pass `--comment` or `--fix` to the built-in reviewers. Posting belongs to this
+  skill and targets GitLab, and a reviewer does not change code.
+- Never forward a finding from a tool as your own before it has passed the checklist and
+  the standard. A finding that contradicts either is dropped or reframed.

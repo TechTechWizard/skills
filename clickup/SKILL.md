@@ -1,6 +1,7 @@
 ---
 name: clickup
 description: "Reads and writes ClickUp tasks through the clickup CLI: prepares a task for grilling (card, comments, linked tasks, statement in the developer's own words, list of unknowns), creates tasks and bug reports to the team's own convention, puts estimates and comments on tasks. Use whenever the user gives a ClickUp task id or app.clickup.com/t/ URL, or says «прочитай задачу», «что в таске», «подготовь к грилю», «заведи таску», «багрепорт», «поставь оценку», «напиши коммент в таску» — even when ClickUp is never named and even when the request looks like a one-liner."
+compatibility: "Needs the `clickup` CLI from the claude-work-tools repository and a personal ClickUp API token; the skill offers to install the CLI on first use."
 allowed-tools: Read Write Grep Glob Bash
 ---
 
@@ -81,3 +82,13 @@ Read the protocol before acting.
 End with what was written and where: the task link, the fields set, which convention source
 answered, and anything skipped with the reason (a tag not set because the project has no tag
 names recorded). The user should not need to open ClickUp to know what happened.
+
+## Never
+
+- Never invent an identifier. A list id, a task id, a tag name or an assignee that did
+  not come from a command's output or from the project's `CLAUDE.md` is a guess, and
+  ClickUp accepts guesses silently — an unknown tag name creates a new tag, a request
+  filed in the wrong list is never seen.
+- Never post without showing the text first, unless the user asked to post directly. A
+  wrong comment cannot be unsent from the reader's notification.
+- Never delete a task somebody else created, and never delete one without saying so.
