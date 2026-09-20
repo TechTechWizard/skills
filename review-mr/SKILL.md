@@ -2,6 +2,10 @@
 name: review-mr
 description: "Review somebody else's merge request: read the diff against the team checklist, hunt bugs with the built-in reviewers, and post the findings as comments on the merge request. Trigger on «сделай ревью», «посмотри MR», «проверь мерж реквест», «отревьюй», review this MR, code review — and on any GitLab merge-request URL, even with no other instruction. Read-only on the code: it describes fixes, it never applies them. Reviewing your own fresh work is part of implement-task instead."
 compatibility: "Needs git and `glab` authenticated against your GitLab instance. Written for Claude Code: it invokes the built-in code-review and security-review skills through the Skill tool."
+metadata:
+  source: "git@github.com:TechTechWizard/skills.git"
+  update: "npx skills update"
+  standard: "https://agentskills.io/specification"
 allowed-tools: Read Grep Glob Bash Skill
 ---
 

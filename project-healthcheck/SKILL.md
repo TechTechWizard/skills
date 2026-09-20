@@ -2,6 +2,10 @@
 name: project-healthcheck
 description: "Regular project healthcheck: API state, frontend state, database diagnostics, usage statistics. Universal — reads per-project config from <project>/.claude/healthcheck.md. Use when user asks for a healthcheck, project status check, 'хелсчек', 'состояние проекта', 'проверь стенд', 'статистика использования', 'usage report'."
 compatibility: "Needs a <project>/.claude/healthcheck.md the project writes about itself, plus whatever that config names: a browser for the frontend pass, database access for the database pass."
+metadata:
+  source: "git@github.com:TechTechWizard/skills.git"
+  update: "npx skills update"
+  standard: "https://agentskills.io/specification"
 allowed-tools: Bash Read Write Grep Glob WebFetch Skill
 ---
 
