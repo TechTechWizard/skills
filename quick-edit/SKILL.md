@@ -26,9 +26,13 @@ developer can redirect you before the work rather than after.
 ## How
 
 1. **The standard for the touched stack**, by the lookup in
-   [standards.md](references/standards.md). One line about which source
-   answered, then on with it. Skip this entirely for a change that no standard can
-   have an opinion about — a typo in a comment, a version bump.
+   [standards.md](references/standards.md): `<project>/.claude/standards/<topic>.md`,
+   then `~/.claude/standards/<topic>.md`, then a knowledge base over MCP, then the
+   fallback here. Open the first that exists — do not work from memory of what the
+   team's standard probably says. One line about
+   which source answered, then on with it. Skip this entirely for a change that no
+   standard can have an opinion about — a typo in a comment, a version bump — and say
+   that you skipped it.
 
 2. **Surgical.** Touch what the request names and nothing adjacent. Improving code you
    happened to read is the most common way a two-line change becomes a review.

@@ -13,9 +13,17 @@ allowed-tools: Read Grep Glob Bash
 
 ## The convention
 
-[commit-convention.md](references/commit-convention.md), unless the lookup in
-[standards.md](references/standards.md) finds a `commit` topic closer to the
-project — then that one wins.
+**Read the convention before you write the message — do not compose one from memory.**
+Try these in order and stop at the first that exists — open it, do not assume what it
+says: `<project>/.claude/standards/commit.md`, then `~/.claude/standards/commit.md`,
+then a knowledge base over MCP if one is configured, then
+[commit-convention.md](references/commit-convention.md), which ships with this skill.
+The full rule is in [standards.md](references/standards.md).
+
+Say in one line which source answered. Everything the message contains — the type and
+scope vocabulary, whether a `Refs:` line belongs there, what goes in the body — comes
+from that source. A convention you did not read is a convention you invented, and an
+invented one looks right and is wrong.
 
 ## With details
 

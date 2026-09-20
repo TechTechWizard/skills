@@ -70,9 +70,12 @@ proceed without waiting.
 ## Step 1 — Standards
 
 Find the team's standard for the stack this task touches, by the lookup in
-[standards.md](references/standards.md): the project's own first, then the
-developer's, then a knowledge base over MCP if one is configured, then the fallback
-that ships with the skill. Read what applies; never paste whole documents into context.
+[standards.md](references/standards.md): `<project>/.claude/standards/<topic>.md`
+first, then `~/.claude/standards/<topic>.md`, then a knowledge base over MCP if one is
+configured, then the fallback that ships with the skill. Open the files the lookup
+names — a standard you did not
+read is not a standard you followed. Read what applies; never paste whole documents
+into context.
 
 Say in one line which source answered, and repeat that line in the handover — a reader
 judging the result needs to know which bar it was measured against.

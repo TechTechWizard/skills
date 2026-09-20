@@ -17,8 +17,11 @@ code takes the decision away from its author and hides the disagreement.
 ## 1. The standard
 
 Find the team's review standard and the standard for the touched stack, by the lookup
-in [standards.md](references/standards.md). The fallback when nothing closer
-exists is [review-checklist.md](references/review-checklist.md).
+in [standards.md](references/standards.md): `<project>/.claude/standards/code-review.md`,
+then `~/.claude/standards/code-review.md`, then a knowledge base over MCP, and the same
+ladder for the stack the diff touches. Open the first that exists before reading any of
+the diff. The fallback when nothing closer exists is
+[review-checklist.md](references/review-checklist.md), which ships with this skill.
 
 Say in one line which source answered. A review measured against a bar the author
 cannot see is an argument waiting to happen.
