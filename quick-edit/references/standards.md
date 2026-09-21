@@ -1,49 +1,70 @@
 # Where the standards come from
 
-Every skill in this set that touches code reads the team's standard for the stack it is
-about to touch. This file says where to look and what to do when there is nothing to
-find. Read it once per session, not once per step. Setting the slot up is a human job
-and is described in the README of the skills repository.
+Every skill in this set that touches code reads the team's standard for what it is about
+to touch. This file says where to look, what to open and what to do when there is nothing
+to find. Read it once per session, not once per step. Filling the slot is a human job and
+is described in the README of the skills repository.
 
-## Lookup order
+## Where to look
 
-Take the first that exists and stop.
+**The slot is a directory, and what is in it is the standard.** There is no list of
+expected names anywhere in this skill, deliberately: the listing is the truth, and a
+direction the team documented yesterday shows up by someone putting a file in the folder,
+not by a skill learning its name first.
 
-1. **`<project>/.claude/standards/<topic>.md`** — the project's own. A client project
-   with its own code guide overrides everything else, which is the point of looking here
-   first.
-2. **`~/.claude/standards/<topic>.md`** — the developer's own copy of the team
-   standards, usually a symbolic link per topic into a checkout they already have.
-3. **A company knowledge base over MCP**, when one is configured — search it for the
-   standard of the touched stack and for the general quality standard.
-4. **The fallback shipped with the skill**, listed below. It is general practice rather than
-   anyone's house rules, so that a developer with none of the above still works to a
-   stated bar instead of to nothing. It is deliberately thin: a team's actual standards
-   belong in the slot above, not in a package everyone installs.
+Two folders, in this order:
 
-## Topics and fallback
+1. **`<project>/.claude/standards/`** — the project's own, committed into the repository.
+   A client project with its own code guide overrides everything else, which is the point
+   of looking here first.
+2. **`~/.claude/standards/`** — the developer's own.
 
-`<topic>` is the stack or the activity. Read only the ones the work actually touches.
+For the same subject the project's folder wins and the lookup stops there. Subjects the
+project says nothing about still come from the developer's folder: a project that ships
+its own CSS guide has not thereby cancelled the team's commit convention.
 
-| Topic | Covers | Fallback next to this file |
-|---|---|---|
-| `general` | The quality bar that holds whatever the stack is | — |
-| `laravel`, `frontend`, `css` | The stack being touched | — |
-| `code-review` | What a reviewer looks for | `review-checklist.md` |
-| `commit` | How a commit message is formed | `commit-convention.md` |
+What lies inside is up to the person who set it up. It can be a document, a symbolic link
+to a document, or a symbolic link to a whole directory of documents in a checkout they
+already have. All three read the same way — open the file, or list the directory and open
+what is in it.
 
-A topic with no fallback and nothing in the slot is simply unanswered — say so and carry
-on.
+When neither folder answers for the stack being touched, and a company knowledge base is
+configured over MCP, search that. If a fallback ships with this skill, it comes last; it
+is general practice rather than anyone's house rules, and its only job is that a developer
+with nothing set up still works to a stated bar instead of to nothing.
 
-## What to do when a step above is missing
+## What to open
 
-Nothing, out loud, once. Say in one line which source answered — "standards from the
-project", "no standard found, working to the skill's fallback" — and carry on. A
-missing standard never stops the work, and it never becomes a question to the developer
-either: they know what they have installed.
+Read only what the work actually touches, and decide that from the names you see. A name
+that matches the stack being edited, a name that matches the activity being performed —
+that is the whole of the rule. Everything else in the folder belongs to work this session
+is not doing.
 
-Put the same line in the handover report when the skill writes one, because a reader
-judging the result needs to know which bar it was measured against.
+A directory entry is read the same way: list it, open the documents whose names match, and
+leave the rest. Documentation repositories nest their documents (`common/`, `nextjs/`,
+`react-native/`) and the nesting says what a document is for, so a mobile document is not
+opened for a web change. An `index.md` in such a repository is usually an introduction
+rather than a table of contents — opening it costs a read and answers nothing.
+
+Never paste a whole document into context. Read what applies.
+
+## Say which source answered
+
+One line, out loud, once: "standards from the project", "standard from
+`~/.claude/standards/frontend/common-стиль-кода.md`", "nothing in the slot for this stack,
+working to the skill's fallback". Put the same line in the handover report when the skill
+writes one, because a reader judging the result needs to know which bar it was measured
+against.
+
+Naming the file rather than the folder matters. A folder that exists proves nothing about
+what was read, and a checkout nobody has pulled answers with last year's rules while
+looking entirely current.
+
+## When there is nothing to find
+
+Nothing stops. Say in one line that the slot holds nothing for this stack and carry on to
+the fallback, or to plain good practice if there is no fallback. A missing standard never
+becomes a question to the developer either: they know what they put in their own folder.
 
 ## When a standard contradicts the task
 

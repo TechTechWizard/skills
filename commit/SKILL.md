@@ -14,10 +14,11 @@ allowed-tools: Read Grep Glob Bash
 ## The convention
 
 **Read the convention before you write the message — do not compose one from memory.**
-Try these in order and stop at the first that exists — open it, do not assume what it
-says: `<project>/.claude/standards/commit.md`, then `~/.claude/standards/commit.md`,
-then a knowledge base over MCP if one is configured, then
+List `<project>/.claude/standards/`, then `~/.claude/standards/`, and open what is there
+about commit messages — the file is usually called `commit`, but it is the folder that
+answers, not this sentence. Then a knowledge base over MCP if one is configured, then
 [commit-convention.md](references/commit-convention.md), which ships with this skill.
+Open the file, do not assume what it says.
 The full rule is in [standards.md](references/standards.md).
 
 Say in one line which source answered. Everything the message contains — the type and

@@ -1,40 +1,45 @@
 # Where the conventions come from
 
-Writing a task or a bug report into the tracker follows the team's own convention, and
-this skill does not carry it. This file says where to look and what to do when there is
-nothing to find. Read it once per session, not once per step. Setting the slot up is a
-human job and is described in the README of the skills repository.
+Writing a task or a bug report into ClickUp follows the team's own convention, and this
+skill does not carry it. This file says where to look and what to do when there is
+nothing to find. Read it once per session, not once per step. Filling the slot is a human
+job and is described in the README of the skills repository.
 
-## Lookup order
+## Where to look
 
-Take the first that exists and stop.
+**The slot is a directory, and what is in it is the convention.** This file declares no
+list of expected names: the listing is the truth, and a convention the team wrote
+yesterday shows up by someone putting a file in the folder.
 
-1. **`<project>/.claude/standards/<topic>.md`** — the project's own. A client project
-   with its own way of naming tasks overrides everything else, which is the point of
-   looking here first.
-2. **`~/.claude/standards/<topic>.md`** — the developer's own copy of the team
-   conventions, usually a symbolic link per topic into a checkout they already have.
-3. **A company knowledge base over MCP**, when one is configured — search it for the
-   task and bug conventions.
-4. **The fallback shipped with the skill**, listed below. It is general practice rather than
-   anyone's house rules, so that somebody with none of the above still writes to a
-   stated shape instead of to none. It is deliberately thin: a team's actual convention
-   belongs in the slot above, not in a package everyone installs.
+Two folders, in this order:
 
-## Topics and fallback
+1. **`<project>/.claude/standards/`** — the project's own. A client project with its own
+   way of naming tasks overrides everything else, which is the point of looking here
+   first.
+2. **`~/.claude/standards/`** — the developer's own.
 
-| Topic | Covers | Fallback next to this file |
-|---|---|---|
-| `task` | How a task is named, and what belongs in its description | `task.md` |
-| `bug` | The shape of a bug report | `bug.md` |
+For the same subject the project's folder wins and the lookup stops there. What lies
+inside can be a document, a symbolic link to one, or a symbolic link to a directory of
+them — all three read the same way.
 
-Read the one the work actually needs. A task and a bug are written differently, and the
-difference lives in these two documents rather than in this skill.
+When neither folder says anything about writing a task or a defect, and a company
+knowledge base is configured over MCP, search that. Last comes the fallback shipped with
+this skill: `task.md` and `bug.md` next to this file. They are general practice rather
+than anyone's house rules, deliberately thin, so that somebody with none of the above
+still writes to a stated shape instead of to none.
 
-## What to do when a step above is missing
+## What to open
 
-Nothing, out loud, once. Say in one line which source answered — "convention from the
-project", "no convention found, working to the skill's fallback" — and carry on. A
+A task and a bug are written differently, so open the one that matches what is being
+written rather than both. Decide from the names in the folder: `task` and `bug` are the
+usual ones, and a folder that names them otherwise is still the answer — this file is not
+a list of what must be there.
+
+## Say which source answered, and what to do when none does
+
+One line, out loud, once, naming the file rather than the folder — "convention from the
+project", "convention from `~/.claude/standards/task.md`", "nothing in the slot about
+writing tasks, working to the skill's fallback" — and carry on. A
 missing convention never stops the work, and it never becomes a question to the user
 either: they know what they have installed.
 

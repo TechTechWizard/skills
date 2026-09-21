@@ -44,30 +44,37 @@ and both `review-mr` and `implement-task` call the built-in one to hunt bugs.
 
 None of these skills ships anybody's standards. `quick-edit`, `implement-task`, `commit`
 and `review-mr` look the team's code standards up; `clickup` looks the task and bug
-conventions up. Both use the same slot, in this order: the project's own
-`<project>/.claude/standards/<topic>.md`, then your `~/.claude/standards/<topic>.md`, then
-a company knowledge base over MCP if one is configured, then a thin general-practice
-fallback that ships with the skill. Code topics are `general`, `laravel`, `frontend`,
-`css`, `code-review`, `commit`; the tracker topics are `task` and `bug`.
+conventions up. Both look in the same place, and that place is a folder:
 
-A missing standard never stops the work: the skill says which source answered, once, and
-carries on.
+1. `<project>/.claude/standards/` — committed into the project, so everyone working on it
+   gets the same answer, including someone with nothing set up.
+2. `~/.claude/standards/` — yours.
 
-To point the slot at documents you already have, link them one topic at a time:
+Then a company knowledge base over MCP if one is configured, then a thin
+general-practice fallback that ships with the skill.
+
+**Put in the folder whatever you want the skills to read.** The documents themselves,
+symbolic links to documents, or symbolic links to whole directories of documents in a
+checkout you already have — all three work, and nothing inside these skills declares what
+ought to be there. A session lists the folder and opens what matches the work in front of
+it, so a direction your company documented yesterday starts answering the moment somebody
+drops a link in, with no change to any skill and no update to install.
 
 ```sh
 mkdir -p ~/.claude/standards
 ln -s ~/Work/coding-standards/docs/quality-standards.md    ~/.claude/standards/general.md
 ln -s ~/Work/coding-standards/docs/code-review.md          ~/.claude/standards/code-review.md
 ln -s ~/Work/coding-standards/docs/work-with-repository.md ~/.claude/standards/commit.md
+ln -s ~/Work/frontend/docs                                 ~/.claude/standards/frontend
 ln -s ~/Work/<your-docs>/task-convention.md                ~/.claude/standards/task.md
-ln -s ~/Work/<your-docs>/bug-convention.md                 ~/.claude/standards/bug.md
 ```
 
-One link per topic rather than one link for the whole directory: the topics usually come
-from more than one repository, and the filenames rarely match the topic names. For a
-project whose rules differ, commit `<project>/.claude/standards/<topic>.md` into the
-project — then everyone on it gets the same answer, including someone with nothing set up.
+Name each entry after the stack or the activity it covers, because that name is all a
+session has to go on when it decides what this change needs. Beyond that there is no
+convention to learn.
+
+A missing standard never stops the work: the skill says which file answered, once, and
+carries on.
 
 ## What the skills expect
 

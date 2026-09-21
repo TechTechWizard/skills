@@ -26,11 +26,12 @@ developer can redirect you before the work rather than after.
 ## How
 
 1. **The standard for the touched stack**, by the lookup in
-   [standards.md](references/standards.md): `<project>/.claude/standards/<topic>.md`,
-   then `~/.claude/standards/<topic>.md`, then a knowledge base over MCP, then the
-   fallback here. Open the first that exists — do not work from memory of what the
-   team's standard probably says. One line about
-   which source answered, then on with it. Skip this entirely for a change that no
+   [standards.md](references/standards.md): list `<project>/.claude/standards/`, then
+   `~/.claude/standards/`, and open what is in there about the stack you are editing —
+   a document, or a directory of documents, whichever the developer put in the folder.
+   Then a knowledge base over MCP, then the fallback here. Open it — do not work from
+   memory of what the team's standard probably says. One line naming the file that
+   answered, then on with it. Skip this entirely for a change that no
    standard can have an opinion about — a typo in a comment, a version bump — and say
    that you skipped it.
 

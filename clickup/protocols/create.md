@@ -13,7 +13,8 @@ the convention, not in this file.
 ## Steps
 
 1. **Read the convention** for the kind being written, by the lookup in
-   `../references/conventions.md`: topic `task` for work we do, topic `bug` for a defect.
+   `../references/conventions.md`: what the slot holds about tasks for work we do, what
+   it holds about defects for a bug.
    One line about which source answered, then on with it.
 
 2. **Find where it goes.** The list id and the tag names come from the project's

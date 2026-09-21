@@ -70,11 +70,11 @@ proceed without waiting.
 ## Step 1 — Standards
 
 Find the team's standard for the stack this task touches, by the lookup in
-[standards.md](references/standards.md): `<project>/.claude/standards/<topic>.md`
-first, then `~/.claude/standards/<topic>.md`, then a knowledge base over MCP if one is
-configured, then the fallback that ships with the skill. Open the files the lookup
-names — a standard you did not
-read is not a standard you followed. Read what applies; never paste whole documents
+[standards.md](references/standards.md): list `<project>/.claude/standards/` first, then
+`~/.claude/standards/`, and open what is in those folders about this stack — a document,
+or a directory whose document names say what each one covers. Then a knowledge base over
+MCP if one is configured, then the fallback that ships with the skill. Open the files — a
+standard you did not read is not a standard you followed. Read what applies; never paste whole documents
 into context.
 
 Say in one line which source answered, and repeat that line in the handover — a reader
@@ -213,7 +213,7 @@ two-cycle budget — security-review does not grant an extra cycle.
 
 Commit yourself, by the convention in
 [commit-convention.md](references/commit-convention.md) — or by whatever Step 1
-found for the `commit` topic, which wins over it. One logical change
+found in the slot about commit messages, which wins over it. One logical change
 per commit, messages in English, `Refs:` line with the ClickUp task URL, never a
 `Co-Authored-By` line. Task-prep files (prepared context, developer notes) are never
 committed — they describe the work, not the product, and in the repo they rot into

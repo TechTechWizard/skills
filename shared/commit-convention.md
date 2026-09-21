@@ -1,7 +1,7 @@
 # Commit convention
 
-The fallback convention. A `commit` topic found by the lookup in `standards.md`
-wins over this file.
+The fallback convention. Anything the lookup in `standards.md` finds about commit
+messages wins over this file.
 
 ## Format
 

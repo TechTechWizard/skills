@@ -41,9 +41,10 @@ directly; a wrong comment cannot be unsent from the reader's notification.
 
 The naming rule, the description style and the shape of a bug report are the team's, not
 this skill's, and they are looked up rather than shipped:
-`<project>/.claude/standards/<topic>.md`, then `~/.claude/standards/<topic>.md`, then a
-knowledge base over MCP, then a thin fallback here. Topics are `task` and `bug`. The full
-rule, including what to say when nothing answers, is in `references/conventions.md`.
+list `<project>/.claude/standards/`, then `~/.claude/standards/`, and open what is there
+about writing a task or a defect. Then a knowledge base over MCP, then a thin fallback
+here. The full rule, including what to say when nothing answers, is in
+`references/conventions.md`.
 
 ## Which protocol
 
@@ -51,8 +52,8 @@ Decide by what the user needs, not by the words they used:
 
 - **Understand a task before working on it** (grill prep, «что там», «разберись») →
   `protocols/read-task.md`. Read-only.
-- **Create a task or a bug report** → `protocols/create.md`, which reads the convention for
-  the right topic. Work we will do ourselves is a task; something that behaves wrongly is a
+- **Create a task or a bug report** → `protocols/create.md`, which reads whatever the slot
+  holds for the kind being written. Work we will do ourselves is a task; something that behaves wrongly is a
   bug, and the two are written differently.
 - **Estimate or comment on an existing task** → no protocol; the rules below and the CLI
   README are enough.
