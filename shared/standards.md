@@ -47,32 +47,49 @@ opened for a web change. An `index.md` in such a repository is usually an introd
 rather than a table of contents — opening it costs a read and answers nothing, and having
 opened it is not having read the standard.
 
-**Reading means opening the document before the change, not searching it after.** A
-search returns the words already in your head, so it can only confirm what you remembered
-the standard to say; the rule the standard exists to give you is the one you did not know
-to search for, and it sits in a paragraph no grep returns. Open the document that matches
-the work — or the section of it that covers what is being touched — read it, and then
-edit. A search across a whole slot entry is worse than a search inside one document: it
-runs through every subdirectory at once, so a mobile rule matches on a web change and
-arrives without the heading that would have said whose rule it is.
+**Write the choice down before the edit.** One line naming the documents you are about to
+read, each by its full path. For a change to code, the document about how code is written
+in that stack — its code style, naming, formatting — is on that line every time, because
+every line of the change is subject to it; architecture, testing or best-practice documents
+join it when the change touches what they are about, a new class or endpoint, a test. The
+line is there so that a document left out is visible before the edit, to you and to the
+reader, rather than discovered in review.
 
-Never paste a whole document into context. Read the part that applies, of a document you
-have opened.
+**Reading is opening the document, not searching it.** A search for words returns the lines
+that contain the words you already had in mind, so it can only confirm what you expected the
+standard to say; the rule the standard exists to give you is the one you did not think of,
+and it sits in a paragraph that contains none of your words. A grep with context lines
+around its matches looks like a section, but it is a section cut to fit your guess — and
+that holds whether it runs before the edit or after it. So:
+
+- A document of a few hundred lines is opened with the Read tool and read whole.
+- A longer one is navigated by its headings: `grep -n '^#' <document>` is its table of
+  contents, and that is the one search that is navigation rather than reading. Pick every
+  section whose heading covers what the change touches, and read each with the Read tool
+  from its heading to the next heading of the same level. When no heading covers the
+  change, read the general sections at the top, the part that applies to all code.
+
+A search across a whole slot entry is worse still: it runs through every subdirectory at
+once, so a mobile rule matches on a web change and arrives without the heading that would
+have said whose rule it is.
 
 ## Say which source answered
 
-One line, out loud, once: "standards from the project", "standard from
-`~/.claude/standards/frontend/common-стиль-кода.md`", "nothing in the slot for this stack,
-working to the skill's fallback". Put the same line in the handover report when the skill
-writes one, because a reader judging the result needs to know which bar it was measured
-against.
+One line, out loud, once, with the document and what reading it found: "standards from the
+project, `.claude/standards/php.md`: request classes validate every string with a length
+limit", "standard from `~/.claude/standards/frontend/common/docs/common-стиль-кода.md`,
+section on components: правила про это нет", "nothing in the slot for this stack, working to
+the skill's fallback". Put the same line in the answer or the handover report, because a
+reader judging the result needs to know which bar it was measured against — and "the
+document has no rule about this" is a finding too, one that tells the reader the choice in
+the diff was yours.
 
 Naming the file rather than the folder matters, and when the slot entry is a directory the
 file is the document inside it: `~/.claude/standards/frontend/nextjs/<document>.md`, not
-`~/.claude/standards/frontend/`. The line is a claim that a document was opened, and a
-reader checks it against the files the session actually opened; a folder that exists
-proves nothing about what was read, and a checkout nobody has pulled answers with last
-year's rules while looking entirely current.
+`~/.claude/standards/frontend/`. The line is a claim that a document was read, and a reader
+checks it against the files the session actually opened; a folder that exists proves
+nothing about what was read, a document that was only grepped was not read, and a checkout
+nobody has pulled answers with last year's rules while looking entirely current.
 
 ## When there is nothing to find
 

@@ -82,15 +82,25 @@ it.
 
 Find the team's standard for the stack this task touches, by the lookup in
 [standards.md](references/standards.md): list `<project>/.claude/standards/` first, then
-`~/.claude/standards/`, and open what is in those folders about this stack — a document,
+`~/.claude/standards/`, and find what is in those folders about this stack — a document,
 or a directory whose document names say what each one covers. Then a knowledge base over
-MCP if one is configured, then the fallback that ships with the skill. Open the files and
-read them before the first line of code — a standard you did not read is not a standard
-you followed, and a keyword search after the fact is not reading, it only finds what you
-already expected. Read what applies; never paste whole documents into context.
+MCP if one is configured, then the fallback that ships with the skill. Before the first
+line of code:
 
-Say in one line which source answered — the document, with its full path when the slot
-entry is a directory — and repeat that line in the handover: a reader judging the result
+- **Name the documents** you will read, in one line, each by its full path. The stack's
+  code-style document is always on it for a code change, because every line you write is
+  subject to it; architecture, testing and the rest join it when the task touches what
+  they cover. A document missing from this line is visible now, not in review.
+- **Read them with the Read tool** — a short document whole, a long one section by
+  section from its headings (`grep -n '^#'` is the table of contents), every section
+  whose heading covers what the task touches. A keyword grep over a document is not
+  reading it: it returns the lines with the words you already expected and hides the rule
+  you did not know to look for, and a standard you did not read is not a standard you
+  followed.
+- **Say what the reading found** — the rules that govern this task, or «правила про это
+  нет» for a document that has none.
+
+Repeat the documents and their findings in the handover: a reader judging the result
 needs to know which bar it was measured against, and a directory name tells them which
 entry was found, not what was read.
 

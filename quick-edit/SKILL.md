@@ -27,15 +27,26 @@ developer can redirect you before the work rather than after.
 
 1. **The standard for the touched stack**, by the lookup in
    [standards.md](references/standards.md): list `<project>/.claude/standards/`, then
-   `~/.claude/standards/`, and open what is in there about the stack you are editing —
+   `~/.claude/standards/`, and find what is in there about the stack you are editing —
    a document, or a directory of documents, whichever the developer put in the folder.
-   Then a knowledge base over MCP, then the fallback here. Open it and read it before
-   the edit — not from memory of what the team's standard probably says, and not by a
-   keyword search after the edit, which only confirms what you already assumed. One
-   line naming the file that answered — the document itself, with its full path when
-   the slot entry is a directory — then on with it. Skip this entirely for a change
-   that no standard can have an opinion about — a typo in a comment, a version bump —
-   and say that you skipped it.
+   Then a knowledge base over MCP, then the fallback here. Before the edit, three things
+   in this order:
+   - **Name the documents** you will read, in one line, each by its full path. For a
+     change to code the stack's code-style document is always on it, because every line
+     you write is subject to it; add architecture, testing or other documents when the
+     change touches what they cover — a new class, an endpoint, a test.
+   - **Read them with the Read tool.** A short document whole; a long one by its
+     headings (`grep -n '^#'` is its table of contents), reading whole every section
+     whose heading covers the change. A keyword grep over the document is not reading
+     it, before the edit or after: it returns the lines containing the words you already
+     had in mind and hides the rule you did not think to look for, which is the one the
+     standard exists to give you.
+   - **Say what the reading found**: the rule that governs this change, or that the
+     document has none about it — «правила про это нет». The same line goes into the
+     answer at the end, so the developer sees which bar the change was held to.
+
+   Skip this entirely for a change that no standard can have an opinion about — a typo
+   in a comment, a version bump — and say that you skipped it.
 
 2. **Surgical.** Touch what the request names and nothing adjacent. Improving code you
    happened to read is the most common way a two-line change becomes a review.
