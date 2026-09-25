@@ -56,7 +56,13 @@ Two rules when using it here:
 
 When the diff touches authentication, authorization, parsing of untrusted input, file
 uploads or secrets, also run the built-in `security-review` skill on the branch. Same
-two rules; its findings land in the security category.
+two rules; its findings land in the security category. Parsing of untrusted input
+means a new parser, deserializer or raw-byte handling — code that decides what the
+bytes mean. Adding or changing a standard validation rule on a request, or the usual
+coercion of a route parameter, does not count: the framework already decides what the
+bytes mean there, and a review that ran the security pass on every `max:255` would
+run it on every merge request. This is the same line `implement-task` draws, so the
+author's own run and this review reach the same decision on the same diff.
 
 When the merge request implements a Figma mockup, pull the reference through the
 official Figma MCP (`get_screenshot`, and `get_design_context` for tokens) and compare

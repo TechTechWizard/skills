@@ -30,13 +30,20 @@ actually blocks them.
 ## The shape of a comment
 
 Tag the author first — their username comes from the merge request JSON
-(`.author.username`). Lead with the ask, then the detail:
+(`.author.username`). The tag is what notifies them: a comment without one waits in
+the discussion until they happen to open the merge request. Lead with the ask, then
+the detail:
 
 ```
 @username, please resolve the conflicts in <file>.
 
 Some details: <what breaks, when, and the suggested fix>
 ```
+
+The tag is the default, not a fixture. When the developer said not to mention anyone
+— a test merge request, an author who asked not to be pinged, a review of their own
+branch — leave it out and open with the ask itself. The comment says the same thing;
+it only stops knocking, and a notification, unlike the text, cannot be taken back.
 
 In English, whatever language the review was discussed in.
 
@@ -76,18 +83,25 @@ without anyone noticing.
 
    For a deleted line use `old_path` and `old_line` instead.
 
-3. Post it:
+3. Post it, from a temporary file of its own:
 
    ```sh
+   payload=$(mktemp)
+   # write the JSON above into "$payload"
    glab api -X POST -H 'Content-Type: application/json' \
      projects/<url-encoded-path>/merge_requests/<iid>/discussions \
-     --input comment.json
+     --input "$payload"
    ```
 
 4. **Verify.** The note in the response must have `"type": "DiffNote"`. A general
    comment has `"type": null` — if that is what came back, delete it
    (`glab api -X DELETE .../notes/<note_id>`) and post again with a corrected
    position. Do not leave both.
+
+5. **Remove the file** once the note is verified. Its body is a judgement on
+   somebody's code, and a copy left in `/tmp` outlives the review; a fixed name such
+   as `comment.json` also hands the next run a stale body to post by mistake, which is
+   why the file gets a name from `mktemp` in the first place.
 
 ## Before posting anything
 
