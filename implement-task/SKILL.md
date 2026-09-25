@@ -31,14 +31,39 @@ results (and the grilling output, when the task was grilled). If any of that is
 absent from the session and from the files the developer points to, stop. Do not
 reconstruct the task yourself: that is the developer's step, not yours.
 
-## Step 0 — Intake (one message, once)
+## Step 0 — Intake: the first thing you write
 
-Every run opens with the intake message, and the first thing a reader sees decides
-what they think is running: an intake message says `implement-task`, a diff with no
-preamble says `quick-edit`. The message is also the record of how you read the
-developer's answers, and the only moment they can correct a misreading before it turns
-into code. So the message is written on every run; what the prepared materials change
-is whether you wait for the reply, not whether the message exists.
+**The intake message is the first text of the run.** Before it you read what the intake
+needs — the task statement and the files it points to, the project's `CLAUDE.md`,
+`.claude/verify.md` if there is one, the code an ambiguity turns on — but you write
+nothing else and edit nothing. The
+first thing a reader sees decides what they think is running: an intake message says
+`implement-task`, a diff with no preamble says `quick-edit`. The message is also the
+record of how you read the developer's answers, and the only moment they can correct a
+misreading before it turns into code. A progress line written ahead of it ("reading the
+standard now") is exactly where the intake gets lost: once the run is talking about the
+work, a message about how the answers were read feels like a step already behind you,
+and it surfaces, if at all, in the handover.
+
+**Answers given in advance are the input to the intake, not a reason to skip it.** A
+prompt that already says "no live stand, no questions until morning" makes the message
+shorter and removes the wait; it does not remove the message. Those are the runs where
+it matters most, because nobody is watching to catch a misread answer.
+
+The message has a fixed shape, so that it cannot dissolve into the text around it:
+
+```
+Приёмка implement-task
+1. Проверка на стенде: <да / нет → вариант 3, только тесты / вопрос> — <откуда: дано в промпте / в постановке / спрашиваю>
+2. Неясности: <по строке на каждую: закрыто чем и на каком основании / вопрос>
+<Жду ответа. | Ответы даны заранее — продолжаю без ожидания.>
+```
+
+Every pre-given answer appears on the line of the question it answers, mapped onto that
+question's own options ("тесты не запускать" → option 3 of question 1; "ветка от
+development" → question 2, closed by the prompt), so the developer can see each one was
+understood. The heading line stays exactly as written in every language, because it is
+what a reader or a watcher looks for; the rest follows the developer's language.
 
 Ask everything up front in that single message, then do not ask again until the
 handover. The verify.md exchange below — the developer picking an option and you asking
@@ -61,22 +86,14 @@ the only other exception:
    Only questions the analysis and grill did not already answer.
 
    **Resolve before you ask.** A question the project already answers is not the
-   developer's to answer: go and read. Its `CLAUDE.md`, the code around the change, the
-   standards from Step 1 and the conventions visible in the history settle most of what
-   feels ambiguous at first reading. Say in the intake message what you closed this way
+   developer's to answer: go and read. Its `CLAUDE.md`, the code around the change and
+   the conventions visible in the history settle most of what
+   feels ambiguous at first reading; the standards themselves are read in Step 1, after
+   the intake. Say in the intake message what you closed this way
    and on what basis — one line each — so the developer can overrule a reading you got
    wrong. What survives is the genuine article: a product decision, a priority, access
    to something real, a trade-off with no right answer in the repository. Ask that, and
    only that.
-
-When the prepared materials already answer the intake questions, the message still
-goes out, before any work, and it says what was answered where: each pre-given answer
-mapped onto the intake's own options ("no live stand" → option 3, live verification
-skipped by choice; "the endpoint stays under the same prefix" → question 2, closed by
-the statement). Then apply them and proceed without waiting. A run that skips the
-message because the answers were given leaves the developer reading the handover to
-find out how their answers were understood, which is the one place too late to fix
-it.
 
 ## Step 1 — Standards
 
