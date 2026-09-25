@@ -33,10 +33,17 @@ reconstruct the task yourself: that is the developer's step, not yours.
 
 ## Step 0 — Intake (one message, once)
 
-Ask everything up front in a single message, then do not ask again until the handover.
-The verify.md exchange below — the developer picking an option and you asking for the
-blanks you could not fill — counts as part of intake; the stop rules below are the
-only other exception:
+Every run opens with the intake message, and the first thing a reader sees decides
+what they think is running: an intake message says `implement-task`, a diff with no
+preamble says `quick-edit`. The message is also the record of how you read the
+developer's answers, and the only moment they can correct a misreading before it turns
+into code. So the message is written on every run; what the prepared materials change
+is whether you wait for the reply, not whether the message exists.
+
+Ask everything up front in that single message, then do not ask again until the
+handover. The verify.md exchange below — the developer picking an option and you asking
+for the blanks you could not fill — counts as part of intake; the stop rules below are
+the only other exception:
 
 1. **Live-stand verification: yes or no?** A plain "no" means option 3 below.
    If the project has `.claude/verify.md`, skim it against the repo right here at
@@ -62,10 +69,14 @@ only other exception:
    to something real, a trade-off with no right answer in the repository. Ask that, and
    only that.
 
-When the prepared materials already answer the intake questions, still compose the
-intake message for the record, map each pre-given answer onto the intake's own
-options explicitly (stating the mapping in the recorded message), apply them, and
-proceed without waiting.
+When the prepared materials already answer the intake questions, the message still
+goes out, before any work, and it says what was answered where: each pre-given answer
+mapped onto the intake's own options ("no live stand" → option 3, live verification
+skipped by choice; "the endpoint stays under the same prefix" → question 2, closed by
+the statement). Then apply them and proceed without waiting. A run that skips the
+message because the answers were given leaves the developer reading the handover to
+find out how their answers were understood, which is the one place too late to fix
+it.
 
 ## Step 1 — Standards
 
@@ -123,6 +134,10 @@ and the conflict is logged in the handover for the developer to settle.
 - **Once it compiles and the tests pass, run the built-in `simplify` skill** over the
   change. It only touches the diff, so the surgical rule holds. Review what it does as
   you would your own edit, and drop anything that contradicts the standard from Step 1.
+  When it does not run — the host has no such skill, or you decided the diff gave it
+  nothing to do — the handover's «Ревью» section says so with the reason, because a
+  simplify pass that quietly did not happen reads exactly like one that found nothing
+  to change, and the reader cannot tell a clean diff from an unexamined one.
 
 ## Step 3 — Self-review loop
 
@@ -255,6 +270,7 @@ and "live verification skipped by the developer's choice" when option 3 was chos
 
 ## Ревью
 [which reviewers actually ran — canonical form: "встроенный code-review (уровень N); ocr в прогоне не участвовал" / "+ ocr delegation pass" / "ручной проход по review-checklist.md (за встроенного)"; combine the forms with "+" when cycles or slots used different reviewers]
+[simplify: ran, or skipped with the reason]
 [findings fixed; findings remaining after 2 cycles, if any]
 [when both reviewers ran: built-in N findings / ocr M findings, overlap K, unique-to-one listed in one line each]
 
