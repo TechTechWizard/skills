@@ -10,6 +10,9 @@ metadata:
 
 # Implement a task
 
+The first text you write in a run is the intake message of Step 0, before any other
+message and before any edit — also when every answer was given in advance.
+
 ## Role and boundaries
 
 You finish the code; the developer owns the ideas. The task statement, the pre-analysis
@@ -36,7 +39,10 @@ reconstruct the task yourself: that is the developer's step, not yours.
 **The intake message is the first text of the run.** Before it you read what the intake
 needs — the task statement and the files it points to, the project's `CLAUDE.md`,
 `.claude/verify.md` if there is one, the code an ambiguity turns on — but you write
-nothing else and edit nothing. The
+nothing else and edit nothing. Working the answers out in your reasoning is not the
+intake: the developer reads your messages, not your thinking, so an intake that was only
+decided is, from where they sit, an intake that never happened. Write it out as a
+message, then go on. The
 first thing a reader sees decides what they think is running: an intake message says
 `implement-task`, a diff with no preamble says `quick-edit`. The message is also the
 record of how you read the developer's answers, and the only moment they can correct a
