@@ -14,14 +14,21 @@ allowed-tools: Read Grep Glob Bash
 ## Before anything
 
 ```sh
+git remote -v
 git branch --show-current
 git status
 git log <target>...HEAD --oneline
 git diff <target>...HEAD --stat
 ```
 
+These are local and answer at once, so they come before any `glab` call: `glab` talks
+to the network and needs a remote to talk to, and on a clone with none it only returns
+an error that `git remote -v` had already given for free. Nothing in this skill calls
+`glab` until the remote is known to exist.
+
 `<target>` is the project's integration branch — `development` on most, but read the
-project's own `CLAUDE.md` or its recent merge requests before assuming.
+project's own `CLAUDE.md` or its recent merge requests (`glab mr list`, after the remote
+is confirmed) before assuming.
 
 **Uncommitted changes stop this.** List them and ask: commit them first with the
 `commit` skill, or proceed and leave them behind. Never decide that for the developer;
@@ -79,7 +86,10 @@ session with nobody at the keyboard it hangs the run. With the title and the
 description given, that confirmation is the only prompt left, so the flag skips
 nothing the skill wanted asked.
 
-Then print the link, the title and the target branch.
+Then print the link, the title and the target branch. Everything said to the developer
+— that line, a question, a refusal — is in the language they are speaking; the title
+and the description of the merge request stay in English, because the reviewer may not
+share that language.
 
 ## Never
 

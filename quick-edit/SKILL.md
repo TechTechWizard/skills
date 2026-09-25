@@ -52,7 +52,9 @@ developer can redirect you before the work rather than after.
    an edge case the change leaves open, a test you could not run and why, something
    nearby that now looks wrong. No headings, no report, no recap of the change — they
    are about to read it. When there is nothing beyond the diff, one line is the whole
-   answer.
+   answer. Write it in the language the developer is speaking — a Russian request gets
+   a Russian answer — while the code and the comments in it stay in English, as the
+   codebase is.
 
    **A conclusion that changes nothing the developer does is either verified or left
    out.** "I read the framework and this case behaves as it did before" costs them a
