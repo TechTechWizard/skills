@@ -104,10 +104,12 @@ or a directory whose document names say what each one covers. Then a knowledge b
 MCP if one is configured, then the fallback that ships with the skill. Before the first
 line of code:
 
-- **Name the documents** you will read, in one line, each by its full path. The stack's
-  code-style document is always on it for a code change, because every line you write is
-  subject to it; architecture, testing and the rest join it when the task touches what
-  they cover. A document missing from this line is visible now, not in review.
+- **Name the documents in a message, before you open them**: one line of text,
+  `Стандарт: <full path>, <full path>`. The stack's code-style document is always on it
+  for a code change, because every line you write is subject to it; architecture,
+  testing and the rest join it when the task touches what they cover. Write it out
+  rather than settling it in your reasoning — the reader sees messages, not thinking —
+  so a document missing from the line is visible now, not in review.
 - **Read them with the Read tool** — a short document whole, a long one section by
   section from its headings (`grep -n '^#'` is the table of contents), every section
   whose heading covers what the task touches. A keyword grep over a document is not

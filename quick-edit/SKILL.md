@@ -31,10 +31,14 @@ developer can redirect you before the work rather than after.
    a document, or a directory of documents, whichever the developer put in the folder.
    Then a knowledge base over MCP, then the fallback here. Before the edit, three things
    in this order:
-   - **Name the documents** you will read, in one line, each by its full path. For a
-     change to code the stack's code-style document is always on it, because every line
-     you write is subject to it; add architecture, testing or other documents when the
-     change touches what they cover — a new class, an endpoint, a test.
+   - **Name the documents in a message, before you open them**: one line of text to
+     the developer, `Стандарт: <full path>, <full path>`. For a change to code the
+     stack's code-style document is always on it, because every line you write is
+     subject to it; add architecture, testing or other documents when the change
+     touches what they cover — a new class, an endpoint, a test. Write the line out
+     rather than settling it in your reasoning: the developer sees your messages, not
+     your thinking, and a choice of documents nobody can see is one nobody can correct
+     while it still matters.
    - **Read them with the Read tool.** A short document whole; a long one by its
      headings (`grep -n '^#'` is its table of contents), reading whole every section
      whose heading covers the change. A keyword grep over the document is not reading

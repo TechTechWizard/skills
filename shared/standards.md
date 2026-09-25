@@ -47,7 +47,8 @@ opened for a web change. An `index.md` in such a repository is usually an introd
 rather than a table of contents — opening it costs a read and answers nothing, and having
 opened it is not having read the standard.
 
-**Write the choice down before the edit.** One line naming the documents you are about to
+**Write the choice down before the edit.** One line of text in a message — not a decision
+in your reasoning, which nobody but you can see — naming the documents you are about to
 read, each by its full path. For a change to code, the document about how code is written
 in that stack — its code style, naming, formatting — is on that line every time, because
 every line of the change is subject to it; architecture, testing or best-practice documents
