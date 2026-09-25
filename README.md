@@ -90,6 +90,37 @@ rather than refuses:
   skills when they are there, and says in the handover which reviewers actually ran.
 - `project-healthcheck` needs a `healthcheck.md` the project writes about itself.
 
+### On OpenCode
+
+OpenCode reads `~/.agents/skills/`, where `npx skills` puts the canonical copies, so the
+skills themselves need no setup. The standards slot does: OpenCode gates every read
+outside the project directory behind `permission.external_directory`, whose default is
+`ask`. The skill directories are allowed automatically, `~/.claude/standards/` is not, and
+in a headless run there is nobody to answer — the host replies "The user rejected
+permission", and the session ends with exit code 0 and no final text, which looks like a
+run that simply said nothing. One entry in `~/.config/opencode/opencode.json` fixes it:
+
+```json
+{
+  "permission": {
+    "external_directory": {
+      "~/.claude/standards/**": "allow",
+      "~/Work/<your-docs>/**": "allow"
+    }
+  }
+}
+```
+
+The second line stands for the directories your slot links point at. It is needed because
+some models (gemini-3.1-pro in our runs) read the link's target path rather than the link,
+and the target is outside the slot. With both allowed, the skills behave in OpenCode as
+they do in Claude Code.
+
+One more thing you will see: OpenCode reads both `~/.claude/skills/` and
+`~/.agents/skills/`, so when the same set is installed in both it warns about duplicate
+skill names at the start of every session. That is expected and harmless; the warning is
+the only effect.
+
 ## How this repository is laid out
 
 ```
