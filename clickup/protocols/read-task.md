@@ -58,6 +58,16 @@ the work]
 - **Nothing is inferred.** If the description says X and the code does Y, that is an
   item under *Unknown*, not a silent decision. If a term is undefined, it is an item under
   *Unknown*, not a guess from a similarly named class.
+- **Every fact was read in this session, and can be pointed at.** A status, a date, a
+  decision, the state of a document the task refers to — each comes from the card, a
+  comment, a file opened or a command run during this preparation, and the result can
+  say which. What the session carries from elsewhere — an earlier conversation, the
+  project's memory, the developer's own words about the task — is not read; it is
+  remembered, and a remembered status is the kind that has changed since. Such a fact
+  goes under *Unknown* with the file or command that would settle it, or is left out.
+  The reason is what the statement is for: the grill starts from it, and a decision
+  named as still open when it was accepted last week sends the whole discussion the
+  wrong way from the first minute.
 - **Dates on everything taken from comments.** «Already agreed» without a date and an author
   is a claim, not a fact.
 - **Do not estimate here.** The estimate comes after the grill, on the grilled statement;
