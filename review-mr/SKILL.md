@@ -125,6 +125,22 @@ One line per category: clean, or the finding that broke it.
 Write the report in the language the developer is speaking. The comments on the merge
 request are in English regardless, because the author may not share that language.
 
+## What a claim in the report rests on
+
+Every statement about the repository — a file is missing, a test does not exist, a
+route is not registered — rests on a command that ran and showed it. A command that
+did not run shows nothing, and a shell error is the usual way a command does not run:
+zsh refuses a glob that matches nothing before the command starts, so `ls compose*.yml`
+answering `no matches found` says nothing about a `docker-compose.yml` sitting in the
+same directory, and a `grep --include=*.md` the shell expanded for you never searched
+at all. The reader takes "the repository has no compose file" as a fact about the
+project and plans around it, which is why the wrong claim costs more than a missing one.
+
+When a command errors, read the error as the shell's before reading it as the
+repository's: rerun without the pattern (`ls docker-compose.yml`, `git ls-files
+'*compose*'`, a quoted glob). If no command gives a clean answer, the report says
+"could not verify" and what was tried, and "absent" stays out of it.
+
 ## Never
 
 - Never edit the code under review. A reviewer who fixes the defect takes the decision
