@@ -29,11 +29,13 @@ developer can redirect you before the work rather than after.
    [standards.md](references/standards.md): list `<project>/.claude/standards/`, then
    `~/.claude/standards/`, and open what is in there about the stack you are editing —
    a document, or a directory of documents, whichever the developer put in the folder.
-   Then a knowledge base over MCP, then the fallback here. Open it — do not work from
-   memory of what the team's standard probably says. One line naming the file that
-   answered, then on with it. Skip this entirely for a change that no
-   standard can have an opinion about — a typo in a comment, a version bump — and say
-   that you skipped it.
+   Then a knowledge base over MCP, then the fallback here. Open it and read it before
+   the edit — not from memory of what the team's standard probably says, and not by a
+   keyword search after the edit, which only confirms what you already assumed. One
+   line naming the file that answered — the document itself, with its full path when
+   the slot entry is a directory — then on with it. Skip this entirely for a change
+   that no standard can have an opinion about — a typo in a comment, a version bump —
+   and say that you skipped it.
 
 2. **Surgical.** Touch what the request names and nothing adjacent. Improving code you
    happened to read is the most common way a two-line change becomes a review.

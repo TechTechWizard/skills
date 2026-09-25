@@ -44,9 +44,20 @@ A directory entry is read the same way: list it, open the documents whose names 
 leave the rest. Documentation repositories nest their documents (`common/`, `nextjs/`,
 `react-native/`) and the nesting says what a document is for, so a mobile document is not
 opened for a web change. An `index.md` in such a repository is usually an introduction
-rather than a table of contents — opening it costs a read and answers nothing.
+rather than a table of contents — opening it costs a read and answers nothing, and having
+opened it is not having read the standard.
 
-Never paste a whole document into context. Read what applies.
+**Reading means opening the document before the change, not searching it after.** A
+search returns the words already in your head, so it can only confirm what you remembered
+the standard to say; the rule the standard exists to give you is the one you did not know
+to search for, and it sits in a paragraph no grep returns. Open the document that matches
+the work — or the section of it that covers what is being touched — read it, and then
+edit. A search across a whole slot entry is worse than a search inside one document: it
+runs through every subdirectory at once, so a mobile rule matches on a web change and
+arrives without the heading that would have said whose rule it is.
+
+Never paste a whole document into context. Read the part that applies, of a document you
+have opened.
 
 ## Say which source answered
 
@@ -56,9 +67,12 @@ working to the skill's fallback". Put the same line in the handover report when 
 writes one, because a reader judging the result needs to know which bar it was measured
 against.
 
-Naming the file rather than the folder matters. A folder that exists proves nothing about
-what was read, and a checkout nobody has pulled answers with last year's rules while
-looking entirely current.
+Naming the file rather than the folder matters, and when the slot entry is a directory the
+file is the document inside it: `~/.claude/standards/frontend/nextjs/<document>.md`, not
+`~/.claude/standards/frontend/`. The line is a claim that a document was opened, and a
+reader checks it against the files the session actually opened; a folder that exists
+proves nothing about what was read, and a checkout nobody has pulled answers with last
+year's rules while looking entirely current.
 
 ## When there is nothing to find
 

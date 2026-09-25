@@ -22,8 +22,9 @@ in [standards.md](references/standards.md): list `<project>/.claude/standards/`,
 diff touches. Then a knowledge base over MCP. Open them before reading any of the diff. The fallback when nothing closer exists is
 [review-checklist.md](references/review-checklist.md), which ships with this skill.
 
-Say in one line which source answered. A review measured against a bar the author
-cannot see is an argument waiting to happen.
+Say in one line which source answered — the document, with its full path when the slot
+entry is a directory. A review measured against a bar the author cannot see is an
+argument waiting to happen, and a directory name does not show them the bar.
 
 ## 2. The diff, and only the diff
 

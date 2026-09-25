@@ -73,12 +73,15 @@ Find the team's standard for the stack this task touches, by the lookup in
 [standards.md](references/standards.md): list `<project>/.claude/standards/` first, then
 `~/.claude/standards/`, and open what is in those folders about this stack — a document,
 or a directory whose document names say what each one covers. Then a knowledge base over
-MCP if one is configured, then the fallback that ships with the skill. Open the files — a
-standard you did not read is not a standard you followed. Read what applies; never paste whole documents
-into context.
+MCP if one is configured, then the fallback that ships with the skill. Open the files and
+read them before the first line of code — a standard you did not read is not a standard
+you followed, and a keyword search after the fact is not reading, it only finds what you
+already expected. Read what applies; never paste whole documents into context.
 
-Say in one line which source answered, and repeat that line in the handover — a reader
-judging the result needs to know which bar it was measured against.
+Say in one line which source answered — the document, with its full path when the slot
+entry is a directory — and repeat that line in the handover: a reader judging the result
+needs to know which bar it was measured against, and a directory name tells them which
+entry was found, not what was read.
 
 **Nothing found is not a stop.** Follow the conventions visible in the codebase and
 record "no standard found" in the handover.
