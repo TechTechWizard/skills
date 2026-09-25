@@ -210,14 +210,24 @@ two-cycle budget — security-review does not grant an extra cycle.
   pure refactor, a config change or documentation — and say that you skipped it.
 - **Tests always:** run the project's test suite for the touched area; the change is
   not done while tests fail. If the standard way to run tests is unavailable (no
-  runtime, no dependencies installed), either run them in an equivalent environment
-  that is already available (e.g. a running docker daemon), or put an honest "tests
-  not run — no runtime available" into "НЕ проверено" with the exact command for
-  the human to run. Docker counts as available only with a running daemon — never
-  install or start runtimes and daemons on the developer's machine for this, and
-  never imply tests passed when they did not run. An honest "tests not run" does
-  not block Steps 5–6: it goes first in "НЕ проверено" and the work proceeds to
-  commit and handover.
+  runtime, no dependencies installed), either run them in an environment that
+  already exists — the project's own container that is already up, a virtual
+  environment already installed — or put an honest "tests not run — no runtime
+  available" into "НЕ проверено" with the exact command for the human to run.
+  A running Docker daemon is not such an environment: it is the ability to build
+  one, and building one is the developer's decision, not yours. The project's
+  compose file carries the project name, the network and the volume names of the
+  real project, which may well be running on this same machine next to the clone;
+  a `docker compose up` from the clone, or a network and containers of your own
+  with a fresh dependency install inside, collides with that — a subnet already
+  taken, a volume reused — and the collision lands on the developer's data, not on
+  the test run. Bring infrastructure up only when the developer said so for this
+  run, in the prepared materials or at intake; when you can already see at intake
+  that there is no way to run the tests without building one, ask there, in the
+  same single message. Never install or start runtimes and daemons on the
+  developer's machine for this, and never imply tests passed when they did not
+  run. An honest "tests not run" does not block Steps 5–6: it goes first in
+  "НЕ проверено" and the work proceeds to commit and handover.
 - **Live stand — only if the developer said yes at intake:** follow the project's
   `.claude/verify.md` (stand address, test user, how to seed data). Verify with real
   requests — direct API calls for backend, Playwright for UI — against real data.
