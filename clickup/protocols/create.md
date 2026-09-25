@@ -15,7 +15,11 @@ the convention, not in this file.
 1. **Read the convention** for the kind being written, by the lookup in
    `../references/conventions.md`: what the slot holds about tasks for work we do, what
    it holds about defects for a bug.
-   One line about which source answered, then on with it.
+   One line about which source answered, written out here, before the draft exists —
+   not in the report after the item is created. The line tells whoever reads the
+   transcript which shape the text was written to, and it is only useful while the
+   text can still be changed; in an unattended run it is the only place the source
+   appears before `clickup create` runs.
 
 2. **Find where it goes.** The list id and the tag names come from the project's
    `CLAUDE.md` — grep it for `ClickUp`. If the user named the list, that wins. If neither
@@ -29,8 +33,14 @@ the convention, not in this file.
    creating anything.
 
 4. **Draft, then check the draft against the convention** before it is created. Fix what
-   fails. Show the text to the user unless they asked to create directly — a wrong task
-   cannot be unsent from the reader's notification.
+   fails. Show the text to the user and wait, unless they asked to create directly — a
+   wrong task cannot be unsent from the reader's notification. "Directly" is a word in
+   the request — «сразу», «создавай сразу», «без черновика», create it now — and
+   nothing else stands in for it. A request that names the list, the parent and the
+   whole content is a complete request, not a permission to skip the draft: complete
+   input is what makes the draft worth reading, and the item still lands in a list a
+   manager watches, with a notification that has already gone out. When nobody can
+   answer, the draft is the end of the run and nothing is created.
 
 5. **Create it.**
 

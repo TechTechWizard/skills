@@ -34,8 +34,10 @@ member who reaches projects through shared folders can never obtain.
 
 Reading (`task`, `task --markdown`, `comments`, `tasks`, `my-tasks`) changes nothing — run it
 freely. Writing (`create`, `update`, `comment`, `attach`, `tag`) is seen by the manager and
-often by the client. Show the text to the user before posting unless they asked to post
-directly; a wrong comment cannot be unsent from the reader's notification.
+often by the client. Show the text to the user before posting and wait, unless they asked
+to post directly — with a word that says so («сразу», «без черновика», post it now), not
+with a request that merely looks complete; a wrong comment cannot be unsent from the
+reader's notification.
 
 ## Where the conventions come from
 
@@ -94,6 +96,7 @@ names recorded). The user should not need to open ClickUp to know what happened.
   not come from a command's output or from the project's `CLAUDE.md` is a guess, and
   ClickUp accepts guesses silently — an unknown tag name creates a new tag, a request
   filed in the wrong list is never seen.
-- Never post without showing the text first, unless the user asked to post directly. A
-  wrong comment cannot be unsent from the reader's notification.
+- Never post without showing the text first, unless the user asked to post directly in
+  so many words. A complete request is not that word: it is what makes the draft worth
+  reading. A wrong comment cannot be unsent from the reader's notification.
 - Never delete a task somebody else created, and never delete one without saying so.
