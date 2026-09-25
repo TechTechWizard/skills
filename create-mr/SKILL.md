@@ -25,7 +25,13 @@ project's own `CLAUDE.md` or its recent merge requests before assuming.
 
 **Uncommitted changes stop this.** List them and ask: commit them first with the
 `commit` skill, or proceed and leave them behind. Never decide that for the developer;
-a file they were mid-way through is not something to sweep into a merge request.
+a file they were mid-way through is not something to sweep into a merge request, and a
+merge request without it is not what they meant to send either. Untracked files are
+part of this, not an exception: a file the developer wrote and forgot to add is
+untracked, and "it cannot reach the branch" is precisely the problem. When nobody can
+answer — an unattended run, a prompt with no one behind it — stopping means ending
+with the list and no push, because the rule protects the file the developer is in the
+middle of, and a run that cannot ask cannot know which file that is.
 
 ## The task reference
 
@@ -59,13 +65,19 @@ glab mr create \
   --source-branch "<branch>" \
   --target-branch "<target>" \
   --title "<title>" \
+  --yes \
   --description "$(cat <<'BODY'
 ...
 BODY
 )"
 ```
 
-Use a HEREDOC for the body, or the formatting arrives mangled.
+Use a HEREDOC for the body, or the formatting arrives mangled. `--yes` is there because
+`glab mr create` asks "What's next?" after the title and description are set, even
+when both were passed on the command line; in a terminal that is one keypress, in a
+session with nobody at the keyboard it hangs the run. With the title and the
+description given, that confirmation is the only prompt left, so the flag skips
+nothing the skill wanted asked.
 
 Then print the link, the title and the target branch.
 
