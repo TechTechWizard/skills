@@ -57,6 +57,11 @@ carries no id, ask for the task link rather than inventing a reference.
 
 Title: `{TASK_ID}: {what it does}`, imperative, at most 72 characters.
 
+A draft is asked for with `--draft` on `glab mr create`, and the title stays exactly as
+above. `glab` puts `Draft:` in front of the title itself when the flag is passed, so a
+title that already carries the prefix arrives as `Draft: Draft: …`, and the notification
+about it has gone to the project's members before anyone can fix the title.
+
 Description, and nothing beyond these three parts:
 
 ```
@@ -100,7 +105,8 @@ Use a HEREDOC for the body, or the formatting arrives mangled. `--yes` is there 
 when both were passed on the command line; in a terminal that is one keypress, in a
 session with nobody at the keyboard it hangs the run. With the title and the
 description given, that confirmation is the only prompt left, so the flag skips
-nothing the skill wanted asked.
+nothing the skill wanted asked. For a draft, `--draft` joins this same command, with the
+title unchanged.
 
 Then print the link, the title and the target branch, in the developer's language like
 everything else this skill says to them.
