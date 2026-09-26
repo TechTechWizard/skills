@@ -83,25 +83,42 @@ without anyone noticing.
 
    For a deleted line use `old_path` and `old_line` instead.
 
-3. Post it, from a temporary file of its own:
+3. Post it, from a temporary file of its own, in two commands:
 
    ```sh
-   payload=$(mktemp)
-   # write the JSON above into "$payload"
+   payload=$(mktemp) && echo "$payload"
+   # write the JSON above into that file
+   ```
+
+   ```sh
    glab api -X POST -H 'Content-Type: application/json' \
      projects/<url-encoded-path>/merge_requests/<iid>/discussions \
-     --input "$payload"
+     --input "<payload path>"
    ```
+
+   Write down the path the first command prints: a shell variable does not survive into
+   the next command, and the file is needed again in step 4. For the same reason the
+   post command ends with the post — no `; rm -f`, no `&& rm` after it. Either removes
+   the file before anyone has read GitLab's answer, and the answer is what decides
+   whether the file is still needed.
 
 4. **Verify.** The note in the response must have `"type": "DiffNote"`. A general
    comment has `"type": null` — if that is what came back, delete it
    (`glab api -X DELETE .../notes/<note_id>`) and post again with a corrected
-   position. Do not leave both.
+   position from the same file. Do not leave both. A comment deliberately posted as a
+   general one, to `.../notes` because there is no line to attach it to, is verified by
+   the response carrying a note `id`; `"type": null` is correct for it.
 
-5. **Remove the file** once the note is verified. Its body is a judgement on
-   somebody's code, and a copy left in `/tmp` outlives the review; a fixed name such
-   as `comment.json` also hands the next run a stale body to post by mistake, which is
-   why the file gets a name from `mktemp` in the first place.
+5. **Remove the file** once the note is verified, as a command of its own:
+   `rm -f "<payload path>"`. Its body is a judgement on somebody's code, and a copy left
+   in `/tmp` outlives the review; a fixed name such as `comment.json` also hands the
+   next run a stale body to post by mistake, which is why the file gets a name from
+   `mktemp` in the first place. When the post failed, or the verification failed and the
+   repost did too, keep the file and tell the developer its path: the body is ready to
+   post by hand, where rewriting it risks posting a different text.
+
+The same file discipline holds for a general comment: write it to a `mktemp` file, post,
+verify, and only then remove.
 
 ## Before posting anything
 
