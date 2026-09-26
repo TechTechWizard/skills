@@ -50,6 +50,34 @@ target, **always at `high` effort** (`high <branch>`). Never rely on the skill's
 sticky last-used level: it carries over from whatever was typed last for unrelated
 reasons, and review depth has to be the same on every merge request.
 
+**The developer's checkout does not move.** The review usually runs from the
+developer's own clone, and the built-in reviewer reads the files of the branch it is
+given; left to itself it may get them by `git checkout` of that branch in this very
+clone, which leaves the developer on somebody else's branch after the review, and with
+uncommitted work either carried across or blocking the switch. So, before invoking it:
+
+```sh
+git rev-parse HEAD; git branch --show-current; git status --porcelain
+wt=$(mktemp -d) && git worktree add --detach "$wt" "<source-branch>" && echo "$wt"
+```
+
+The first line is the record to compare against afterwards. The second puts the source
+branch into a worktree of its own; write down the path it prints, because a shell
+variable does not survive into the next command. Then pass the target as the range plus
+one sentence that names the worktree — `high <target>...<source-branch>; the branch is
+checked out at <worktree path>, read its files there and do not run git checkout or git
+switch in the current clone`. The whole argument reaches the reviewer as its review
+target, so the sentence is read where it is needed; it is text, not a flag, and nothing
+else about the call changes.
+
+When the reviewer returns, run the first line again and compare. If the branch or the
+commit moved, switch back to what was recorded (`git checkout <branch>`, or `git checkout
+--detach <commit>` when there was no branch) and say in the report that the built-in
+reviewer moved the checkout and it was restored; if the switch back fails, stop and tell
+the developer exactly where the clone stands. Then `git worktree remove "<worktree
+path>"`, which removes the directory as well. The same applies to `security-review`
+below.
+
 Two rules when using it here:
 
 - **Never pass `--comment` or `--fix`.** Posting belongs to this skill and targets
@@ -153,6 +181,9 @@ repository's: rerun without the pattern (`ls docker-compose.yml`, `git ls-files
 
 ## Never
 
+- Never leave the developer's clone on another branch or commit than the one the
+  review started from. The review reads somebody else's branch; it does not move the
+  person who asked for it onto that branch.
 - Never edit the code under review. A reviewer who fixes the defect takes the decision
   away from the author and hides the disagreement; the finding says what is wrong and
   what would fix it.
