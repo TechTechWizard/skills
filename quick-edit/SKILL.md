@@ -62,6 +62,20 @@ developer can redirect you before the work rather than after.
    what happened. Do not write new tests here — a change that needs new tests is a
    task, and belongs to `implement-task`.
 
+   Cheap means the environment is already there: the runtime on the machine, the
+   dependencies installed, the project's own container already up. Pulling an image,
+   starting a container or creating a network to run a test or a syntax check is not
+   cheap, however short the command looks — a running Docker daemon is the ability to
+   build an environment, not an environment, and building one on the developer's
+   machine is their decision. The image stays on their disk, and a container started
+   from a clone of a client project can collide with the real project's compose
+   network and volumes running next to it. So without the developer's word for it, no
+   `docker`, `podman` or `docker compose` command at all, not even one to see whether
+   the daemon is up. When nothing already present can run the check, say in the answer
+   that it was not run and why, and give the exact command the developer can run
+   themselves — `php -l <file>`, `php artisan test --filter=<TestClass>`, whatever the
+   project's own check is.
+
 5. **Back to the developer, and nothing they could read off the diff.** Name the file
    and the line so they have somewhere to jump, then only what the diff does not say:
    an edge case the change leaves open, a test you could not run and why, something
@@ -95,3 +109,6 @@ the `commit` skill owns the convention.
 - Never write new tests here. A change that needs them is a task, and belongs to
   `implement-task`.
 - Never commit. The developer is watching and commits when they are ready, with `commit`.
+- Never pull an image, start a container or create a network to check a change unless
+  the developer said so. What the check needs and does not have goes into the answer as
+  a command for them to run.
