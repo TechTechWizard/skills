@@ -11,6 +11,14 @@ allowed-tools: Read Grep Glob Bash
 
 # Create a merge request
 
+Everything said to the developer is in the language they are speaking, from the first
+line to the last: a stop on an uncommitted file, a question about the task, a refusal, a
+failed push and the final link all follow the same rule. The stops matter most here,
+because that is when the developer has to decide what goes into a client's repository,
+and a question they have to translate first is the one most easily misread. The title and
+the description of the merge request stay in English, because the reviewer may not share
+that language.
+
 ## Before anything
 
 ```sh
@@ -94,10 +102,8 @@ session with nobody at the keyboard it hangs the run. With the title and the
 description given, that confirmation is the only prompt left, so the flag skips
 nothing the skill wanted asked.
 
-Then print the link, the title and the target branch. Everything said to the developer
-— that line, a question, a refusal — is in the language they are speaking; the title
-and the description of the merge request stay in English, because the reviewer may not
-share that language.
+Then print the link, the title and the target branch, in the developer's language like
+everything else this skill says to them.
 
 ## Never
 
