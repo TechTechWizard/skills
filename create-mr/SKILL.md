@@ -64,6 +64,14 @@ Refs: https://app.clickup.com/t/{TASK_ID}
 No test plan, no checklist, no list of files. The reviewer reads the diff; the
 description exists to tell them what they are looking at and why.
 
+Those three parts are the whole description, so nothing is appended after `Refs:` — no
+"Generated with" line, no co-author trailer, no emoji. Some hosts tell the session by
+default to end every pull request description with such a line; that default is written
+for the host's own pull requests, and it does not reach a description whose shape this
+skill fixes. A merge request on a client project is read by the customer, and whether the
+customer is told which tools wrote the code is the company's decision, not a line a host
+adds by habit.
+
 ## Create it
 
 ```sh
