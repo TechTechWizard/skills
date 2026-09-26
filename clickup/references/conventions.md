@@ -22,6 +22,12 @@ For the same subject the project's folder wins and the lookup stops there. What 
 inside can be a document, a symbolic link to one, or a symbolic link to a directory of
 them — all three read the same way.
 
+List the folder with something that follows links — `ls -L <folder>`, `find -L <folder>
+-name '*.md'`, or the read tool on the folder itself. Every entry is usually a symbolic
+link, and file-search tools built on ripgrep skip links unless told to follow them:
+OpenCode's `glob` answers "No files found" for a full slot, and the session then writes to
+the fallback believing there is no convention.
+
 When neither folder says anything about writing a task or a defect, and a company
 knowledge base is configured over MCP, search that. Last comes the fallback shipped with
 this skill: `task.md` and `bug.md` next to this file. They are general practice rather

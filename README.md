@@ -105,7 +105,9 @@ run that simply said nothing. One entry in `~/.config/opencode/opencode.json` fi
   "permission": {
     "external_directory": {
       "~/.claude/standards/**": "allow",
-      "~/Work/<your-docs>/**": "allow"
+      "/Users/<you>/.claude/standards/**": "allow",
+      "~/Work/<your-docs>/**": "allow",
+      "/Users/<you>/Work/<your-docs>/**": "allow"
     }
   }
 }
@@ -113,13 +115,24 @@ run that simply said nothing. One entry in `~/.config/opencode/opencode.json` fi
 
 The second line stands for the directories your slot links point at. It is needed because
 some models (gemini-3.1-pro in our runs) read the link's target path rather than the link,
-and the target is outside the slot. With both allowed, the skills behave in OpenCode as
-they do in Claude Code.
+and the target is outside the slot. Each path is written twice, with `~` and absolute,
+because the models do not spell it the same way: gpt-5 in our runs asked for
+`/Users/<name>/.claude/standards/` literally rather than through `~`. On an ordinary setup
+the two lines match the same directory; they part when OpenCode runs with a `HOME` other
+than your account's (a wrapper, a sandbox), and then the absolute line is the one that lets
+the read through. With these allowed, the skills behave in OpenCode as they do in Claude
+Code.
 
-One more thing you will see: OpenCode reads both `~/.claude/skills/` and
-`~/.agents/skills/`, so when the same set is installed in both it warns about duplicate
-skill names at the start of every session. That is expected and harmless; the warning is
-the only effect.
+The slot entries are symbolic links, and OpenCode's `glob` does not follow them: it answers
+"No files found" for a full slot. The skills therefore list the slot with `ls -L` or
+`find -L`, or open the folder with the read tool, and never take an empty glob as an empty
+slot.
+
+One more thing, which you will only see in the log: OpenCode reads both
+`~/.claude/skills/` and `~/.agents/skills/`, so when the same set is installed in both it
+writes a `duplicate skill name` warning per skill into its log (visible with
+`--print-logs`), not into the session's output. That is expected and harmless; the model
+takes the copy from `~/.agents/skills/`.
 
 ## How this repository is laid out
 

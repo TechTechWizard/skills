@@ -28,6 +28,15 @@ to a document, or a symbolic link to a whole directory of documents in a checkou
 already have. All three read the same way — open the file, or list the directory and open
 what is in it.
 
+**List the folder with something that follows links.** Usually every entry in the slot is
+a symbolic link, and file-search tools built on ripgrep skip links unless told to follow
+them: OpenCode's `glob` answers "No files found" for a slot that holds a dozen documents,
+and a session that takes that answer at its word works to the fallback while believing the
+slot is empty. `ls -L <folder>` lists the entries, `find -L <folder> -name '*.md'` lists
+the documents inside linked directories, and the read tool pointed at the folder itself
+shows its entries as well. An empty answer from a pattern search is not evidence that the
+folder is empty; only one of these listings is.
+
 When neither folder answers for the stack being touched, and a company knowledge base is
 configured over MCP, search that. If a fallback ships with this skill, it comes last; it
 is general practice rather than anyone's house rules, and its only job is that a developer
