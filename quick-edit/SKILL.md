@@ -1,6 +1,6 @@
 ---
 name: quick-edit
-description: "A small change the developer is watching: fix a bug in this file, rename it, add the field, adjust the copy. Reads the team standard for the touched stack, keeps the change surgical, runs the tests that already cover it, and answers with what the diff does not say. Trigger on «поправь», «почини», «переименуй», «добавь», «убери», «исправь», fix, rename, tweak — and on any change small enough that nobody will review it separately. Invoke it before the first edit, and also when the change is only the first half of the request — «поправь, потом закоммить» is this skill for the change and then the commit skill for the commit, not one plain edit with a commit tacked on. NOT for a prepared task from the tracker: that is implement-task, which runs on its own and hands over a report."
+description: "A small change the developer is watching: fix a bug in this file, rename it, add the field, adjust the copy. Reads the team standard for the touched stack, keeps the change surgical, runs the tests that already cover it, and answers with what the diff does not say. Trigger on «поправь», «почини», «переименуй», «добавь», «убери», «исправь», fix, rename, tweak — and on any change small enough that nobody will review it separately. NOT for a prepared task from the tracker: that is implement-task, which runs on its own and hands over a report."
 compatibility: "Needs git. Written for Claude Code; the standards lookup reads ~/.claude/standards/."
 metadata:
   source: "https://github.com/TechTechWizard/skills"
