@@ -16,6 +16,14 @@ that the API fails silently in several places — markdown in comments, tag name
 chips, estimates in the wrong unit — and that the text going into a task follows a
 convention this skill deliberately does not carry.
 
+Two languages are in play, and they are decided separately. What goes into ClickUp — the
+name, the description, a comment — is written in the language the convention asks for.
+What is said to the developer — a draft shown for approval, a question, a line saying what
+happens next, the final report — is in the language they are speaking, a Russian request
+getting Russian answers from the first line to the last. The protocols and conventions
+this skill reads are in English, and without the rule the answer drifts into the language
+of the last document read rather than the language of the person reading it.
+
 ## Tool
 
 Everything goes through the `clickup` command. `clickup --help` lists every command, and
